@@ -24,6 +24,7 @@ public class AppController {
     public String getSearch(@RequestParam MultiValueMap<String, String> form, Model model){
 
         List<String> urlList = httpBinSvc.getWithQueryParams(form);
+        model.addAttribute("query", form.getFirst("query"));
         model.addAttribute("urlList", urlList);
         return "gif";
     }

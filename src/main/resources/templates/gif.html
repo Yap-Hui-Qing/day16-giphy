@@ -8,16 +8,16 @@
 </head>
 <body>
     
-    <h1>Search Results</h1>
+    <h1>Search terms: <code data-th-text="${query}"></code></h1>
 
-    <div class="gif-list">
-        <table>
-            <tr data-th-each="image: ${urlList}">
-                <td>
-                    <img data-th-src="${image}">
-                </td>
-            </tr>
-        </table>
+    <div data-th-if="${#lists.isEmpty(urlList)}">
+        <h3>Your search produces no result</h3>
     </div>
+
+    <div data-th-unless="${#lists.isEmpty(urlList)}" class="pictures">
+        <img data-th-each="img : ${urlList}" data-th-src="${img}">
+    </div>
+       
+    <a data-th-href="@{/}">Back</a>
 </body>
 </html>
